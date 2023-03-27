@@ -4,6 +4,7 @@ import Quotes from './components/QuotesComponent/Quotes.component';
 import { fas, faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import Login from './components/LoginComponent/Login.component';
 
 
 library.add(fas, fab, faCoffee)
@@ -12,8 +13,13 @@ library.add(fas, fab, faCoffee)
 
 function App() {
   //* State Management
+  const [login, setLogin] = useState(false)
   const [quote, setQuote] = useState([])
-  const [selectedQuote, setSelectedQuote] = useState({})
+  const [selectedQuote, setSelectedQuote] = useState({
+    text: "Today is the tomorrow we worried about yesterday.",
+    author: "Anonymous",
+    tag: "general"
+  })
 
 
   //* Api call
@@ -38,11 +44,30 @@ function App() {
 
   }
 
+  const handleTweet = () => {
+    const tweet = `https://twitter.com/intent/tweet?text=${selectedQuote.text} - ${selectedQuote.author}`
+    window.open(tweet, '_blank')
+  }
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    setLogin(true)
+    return console.log('click')
+  }
+
   return (
     <div className="App">
-      <Quotes props={{ selectedQuote, selectRandomQuote }} />
+
+      {
+        login ? <Quotes props={{ selectedQuote, selectRandomQuote, handleTweet }} />
+          :
+          <Login props={handleLogin} />
+      }
+
+
     </div>
   );
 }
+
 
 export default App;

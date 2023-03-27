@@ -42,13 +42,18 @@ button {
     box-shadow: 0 0.3rem rgba(121, 121, 121, 0.65)
 }
 
-button:hover {
-    filter: brightness(150%);
-}
-
 button:active {
     transform: translate(0, 0.3rem);
     box-shadow: 0 0.1rem rgba(255, 255, 255, 0.65)
+}
+
+.new-quote-button:hover {
+    background-color: #7BC950;
+}
+
+.new-quote-button:active {
+    color: #7BC950;
+    background-color: #333
 }
 
 .twitter-button:hover {
@@ -69,6 +74,14 @@ button:active {
     }
 
     .quote-text {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
+    }
+
+    .long-quote {
+        font-size: 1.3rem;
+    }
+
+    .quote-author {
+        font-size: 1.5rem;
     }
 }
